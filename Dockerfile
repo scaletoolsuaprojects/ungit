@@ -7,4 +7,4 @@ RUN npm install -g ungit
 RUN mkdir /etc/ungit
 WORKDIR /etc/ungit
 
-CMD ["ungit"]
+CMD ["ungit", "--ungitBindIp", "0.0.0.0"]
