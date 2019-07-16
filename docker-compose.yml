@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  ungit-cb:
+    image: cloudbroker/ungit:latest
+    restart: unless-stopped
+    expose:
+      - "8448"
+    volumes:
+      - ./git/cloudbroker-platform:/etc/ungit
+  np:
+    image: nginx:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - /etc/ssl:/etc/ssl
+      - ./conf:/etc/nginx/conf.d/
+      - /var/cloudbroker/monitoring/.htpasswd.pass:/etc/nginx/.htpasswd
