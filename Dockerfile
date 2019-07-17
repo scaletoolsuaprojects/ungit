@@ -4,7 +4,6 @@ RUN apt-get update -qq && apt-get install -y nano   \
                                     libpq-dev       \
                                     curl
 RUN npm install -g ungit
-RUN mkdir /etc/ungit
-WORKDIR /etc/ungit
+WORKDIR /ungit
 
 CMD ["ungit", "--ungitBindIp", "0.0.0.0"]
